@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="viewmodel"
+        type="com.example.livedata.ViewModel" />
+        <variable
+            name="mContext"
+            type="com.example.livedata.MainActivity2" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity2">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toTopOf="@+id/etEmail"
+            android:layout_margin="10dp"
+            tools:ignore="ContentDescription"
+            app:imageUrl="@{viewmodel.imageUrl}"
+            app:appContext="@{mContext}"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/email"
+            android:importantForAutofill="no"
+            android:minHeight="48dp"
+            android:text="@={viewmodel.editText}"
+            app:layout_constraintBottom_toTopOf="@+id/tiLayout"
+            tools:ignore="TextFields,DuplicateSpeakableTextCheck"
+            tools:layout_editor_absoluteX="10dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiLayout"
+            android:layout_width="match_parent"
+            app:error="@{viewmodel.error2}"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/etText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:text="@={viewmodel.emailText}"
+                android:textSize="16sp"
+                tools:ignore="TextContrastCheck" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/etText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.textData}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/material_dynamic_primary70"
+            android:gravity="center"
+            android:onClick="@{viewmodel::onClick}"
+            android:padding="5dp"
+            android:text="UPDATE"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etText"
+            tools:ignore="HardcodedText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
